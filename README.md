@@ -1,48 +1,35 @@
-### Cat-egory Collector
+# Cat-egory App
 
-Create a javascript application that connects to http://aws.random.cat to pull random cat images. 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-- The page should show a random cat image on load
-- There should be a button to fetch a new image
-- There should be an input to label the image with a category, and a save button next to it
-- There should be a list of all the categories saved so far
-- If you click on a category, it should show a list of the all the cats saved in that category
-- If you reload the page, or navigate back to the page, the previously saved cats and categories should still exist
+This site was developed with [create-react-app](https://github.com/facebook/create-react-app) and serves as the home page for [Cat-egory App](https://www.google.com).
 
-### Stack
-- Use a javascript Single Page Application (SPA) framework: e.g. React, Vue, Angular, Ember, etc.
-- Use bootstrap (and your own styles css)
-- no backend other than the cat api. Site should be static, only clientside javascript
+### Getting Started
 
-### Deliverables
-- full application code
-- image of the project
-- a link to the deployed project (github pages is a nice free option)
+1. Fork the project
+2. Clone your fork
+3. Make sure you are in the right directory: `cd cat-egory`
+4. Run `npm install` to install the project dependencies.
+5. Run `npm start` to start your dev environment.
 
-### Mock up
-![wireframe](cat-egory.png)
+### Creating a new PR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Make sure you are on the `master` branch, and you have pulled the latest changes.
 
-## Available Scripts
+   > `git checkout master && git pull upstream master`
 
-In the project directory, you can run:
+2. Install any new dependencies: `npm install`
 
-### `npm start`
+3. Create a new branch off of the `master` branch.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   > `git checkout -b [NEW BRANCH NAME]`
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+   > **Branch naming conventions:** `fix/[BRANCH]` for bug fixes, `feature/[BRANCH]` for new features, `dev/[BRANCH]` for non-user-facing changes. The `[BRANCH]` portion should be kebab case. For example, if you want to update the README.md file, your branch could be called `dev/update-readme`
 
-### `npm run build`
+4. Make changes and commit them. `git add . && git commit -m "[YOUR COMMIT MESSAGE]"`.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   > The subject of a commit message (the first line) should be 72 characters or less. If you need more room for a longer explanation of your changes, you can add a blank line below the subject and write a commit body. The commit message should be in present-imperative tense ("Update README.md" rather than "Updates" or "Updated").
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+5. Push your branch to your fork: `git push -u origin [BRANCH NAME]`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
+6. Open a new PR against the `master` branch from your fork using the GitHub user interface.
