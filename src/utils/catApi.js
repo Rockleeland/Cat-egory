@@ -2,6 +2,6 @@ import axios from 'axios'
 
 export const API = () => {
   return (
-    axios.get(`http://aws.random.cat/meow`)
+    axios.get(`https://aws.random.cat/meow`)
   )
 }
