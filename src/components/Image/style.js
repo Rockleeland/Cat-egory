@@ -11,4 +11,8 @@ export const StyledImg = styled(Img)`
   max-height: ${props => (props.saved ? "80px" : "350px")};
   max-width: ${props => (props.saved ? "80px" : "350px")};
   border-radius: 5px;
+
+  @media (max-width: 667px) {
+      max-width: 300px;
+  }
 `;

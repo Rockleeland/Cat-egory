@@ -9,4 +9,13 @@ export const StyledCard = styled.div`
   &:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
+
+  @media (max-width: 667px) {
+    box-shadow: none;
+    padding: 0;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
 `;
