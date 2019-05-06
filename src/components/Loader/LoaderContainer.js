@@ -2,7 +2,7 @@ import React from "react"
 import Loader from "react-loader-spinner"
 
 const LoadingSpinner = () => {
-  return <Loader type="Bars" color="#EA8840" height="350" width="350" />;
+  return <Loader type="Bars" color="#EA8840" height="100%" width="100%" />;
 };
 
 export default LoadingSpinner

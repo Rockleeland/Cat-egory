@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
+import ls from 'local-storage'
 import { API } from "../../utils/catApi";
 import { StyledContainer, StyledRow, StyledCol, theme } from "./style";
 import Title from "../Title";
 import Card from "../Card";
 import Categories from "../Categories";
-import SavedImages from "../SavedImages";
 
 class Layout extends Component {
   state = {
@@ -14,10 +14,17 @@ class Layout extends Component {
     categories: [],
     categoryInput: "",
     categoryId: {},
-    category: ""
+    category: "",
+    test: ""
   };
 
   componentDidMount() {
+    //Loads local storage state
+    this.setState({
+      categories: ls.get('categories') || [],
+      savedImages: ls.get('savedImages') || [],
+    })
+
     this.getCats();
   }
 
@@ -64,20 +71,25 @@ class Layout extends Component {
     // and puts it in the categoryId array
     let { categoryInput, cats } = this.state;
     let images = this.savedObject(cats, cats, categoryInput, cats);
+    let categories = this.uniqueCategories([
+      ...this.state.categories,
+      categoryInput
+    ]);
+    let savedImages = [...this.state.savedImages, images]
     this.setState({
-      categories: this.uniqueCategories([
-        ...this.state.categories,
-        categoryInput
-      ]),
+      categories,
       categoryId: {
         id: this.state.cats,
         name: this.state.cats,
         category: this.state.categoryInput,
         link: this.state.cats
       },
-      savedImages: [...this.state.savedImages, images],
+      savedImages,
       categoryInput: ""
     });
+    // updates localStorage state 
+    ls.set('categories', categories);
+    ls.set('savedImages', savedImages);
     this.getCats();
   };
 
@@ -89,7 +101,7 @@ class Layout extends Component {
             <Title />
           </StyledRow>
           <StyledRow>
-            <StyledCol md={12} lg={7}>
+            <StyledCol sm={12} md={12} lg={7}>
               <Card
                 getCats={this.getCats}
                 cats={this.state.cats}
@@ -98,7 +110,7 @@ class Layout extends Component {
                 categoryInput={this.state.categoryInput}
               />
             </StyledCol>
-            <StyledCol md={12} lg={5}>
+            <StyledCol sm={12} md={12} lg={5}>
               <Categories
                 categories={this.state.categories}
                 savedImages={this.state.savedImages}
