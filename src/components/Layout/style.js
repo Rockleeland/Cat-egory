@@ -29,10 +29,11 @@ export const ButtonLayout = styled.div`
 
 export const StyledCol = styled(Col)`
   margin-bottom: 2rem;
+  min-width: 400px;
 `;
 
 export const StyledContainer = styled(Container)`
-  margin: 2rem;
+  margin: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,16 +1,11 @@
-import React, { Component } from "react"
-import { ThemeProvider } from "styled-components"
-import { API } from "../../utils/catApi"
-import { 
-  StyledContainer, 
-  StyledRow, 
-  StyledCol, 
-  theme 
-} from "./style"
-import Title from "../Title"
-import Card from "../Card"
-import Categories from "../Categories"
-import SavedImages from "../SavedImages"
+import React, { Component } from "react";
+import { ThemeProvider } from "styled-components";
+import { API } from "../../utils/catApi";
+import { StyledContainer, StyledRow, StyledCol, theme } from "./style";
+import Title from "../Title";
+import Card from "../Card";
+import Categories from "../Categories";
+import SavedImages from "../SavedImages";
 
 class Layout extends Component {
   state = {
@@ -19,7 +14,7 @@ class Layout extends Component {
     categories: [],
     categoryInput: "",
     categoryId: {},
-    category: ''
+    category: ""
   };
 
   componentDidMount() {
@@ -43,9 +38,9 @@ class Layout extends Component {
     });
   };
 
-  selectedCategory = (category) => {
-    console.log('button pressed', category)
-  }
+  selectedCategory = category => {
+    console.log("button pressed", category);
+  };
 
   uniqueCategories = category => {
     //makes sure that there are no duplicate categories in array
@@ -65,11 +60,11 @@ class Layout extends Component {
         category,
         link
       };
-    } 
+    }
   };
 
   savedImages = () => {
-    // saves image with id, name, category, and link 
+    // saves image with id, name, category, and link
     // and puts it in the categoryId array
     let { categoryInput, cats } = this.state;
     let images = this.savedObject(cats, cats, categoryInput, cats);
@@ -94,29 +89,32 @@ class Layout extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyledContainer>
-          <StyledCol>
-            <StyledRow>
-              <Title />
-            </StyledRow>
-            <Card
-              getCats={this.getCats}
-              cats={this.state.cats}
-              savedImages={this.savedImages}
-              handleChange={this.handleChange}
-              categoryInput={this.state.categoryInput}
-            />
-          </StyledCol>
-          <Categories 
-            categories={this.state.categories}
-            savedImages={this.state.savedImages}
-            selectedCategory={this.selectedCategory}
-            category={this.state.category}
-           />
-          <SavedImages savedImages={this.state.savedImages} />
+          <StyledRow>
+            <Title />
+          </StyledRow>
+          <StyledRow>
+            <StyledCol md={12} lg={7}>
+              <Card
+                getCats={this.getCats}
+                cats={this.state.cats}
+                savedImages={this.savedImages}
+                handleChange={this.handleChange}
+                categoryInput={this.state.categoryInput}
+              />
+            </StyledCol>
+            <StyledCol md={12} lg={5}>
+              <Categories
+                categories={this.state.categories}
+                savedImages={this.state.savedImages}
+                selectedCategory={this.selectedCategory}
+                category={this.state.category}
+              />
+            </StyledCol>
+          </StyledRow>
         </StyledContainer>
       </ThemeProvider>
     );
   }
 }
 
-export default Layout
+export default Layout;

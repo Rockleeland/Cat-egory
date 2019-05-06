@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button"
 
 export const StyledDiv = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: .5rem;
 `;
 
