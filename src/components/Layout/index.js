@@ -38,10 +38,6 @@ class Layout extends Component {
     });
   };
 
-  selectedCategory = category => {
-    console.log("button pressed", category);
-  };
-
   uniqueCategories = category => {
     //makes sure that there are no duplicate categories in array
     if (category === undefined) {
