@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-// import { Categories } from './Categories';
-// import CatList  from './CatList';
-import { ThemeProvider } from "styled-components";
-import Categories from "../Categories/index.js";
-import { API } from "../../utils/catApi";
-import {
-  StyledContainer,
-  StyledRow,
-  StyledCol,
-  theme
-} from "./style";
-import Title from '../Title'
-import Card from '../Card'
+import React, { Component } from "react"
+import { ThemeProvider } from "styled-components"
+import { API } from "../../utils/catApi"
+import { 
+  StyledContainer, 
+  StyledRow, 
+  StyledCol, 
+  theme 
+} from "./style"
+import Title from "../Title"
+import Card from "../Card"
+import Categories from "../Categories"
+import SavedImages from "../SavedImages"
 
 class Layout extends Component {
   state = {
     cats: [],
     savedImages: [],
     categories: [],
-    categoryInput: '',
+    categoryInput: "",
     categoryId: {},
+    category: ''
   };
 
   componentDidMount() {
@@ -37,48 +37,58 @@ class Layout extends Component {
       .catch(err => console.log(err));
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
-        categoryInput: event.target.value
-    })
+      categoryInput: event.target.value
+    });
+  };
+
+  selectedCategory = (category) => {
+    console.log('button pressed', category)
   }
 
-  handleClick = () => {
-    const savedImages = (id, name, category, link) => {
-        if (this.state.categoryId !== {}) {
-            return (
-                {
-                    id,
-                    name,
-                    category,
-                    link
-                }
-            )
-        }
-      }
-      //saves image with
-      let { categoryInput, cats } = this.state;
-      let images = savedImages(cats, cats, categoryInput, cats)
-      this.setState({
-        categories: [
-            ...this.state.categories,
-            categoryInput
-        ],
-        categoryId: {
-            id: this.state.cats,
-            name: this.state.cats,
-            category: this.state.categoryInput,
-            link: this.state.cats
-        },
-        savedImages: [
-            ...this.state.savedImages,
-            images
-        ],
-        categoryInput: '',
-      })
-  }
+  uniqueCategories = category => {
+    //makes sure that there are no duplicate categories in array
+    if (category === undefined) {
+      return;
+    }
+    let categories = new Set(category);
+    categories = Array.from(categories);
+    return categories;
+  };
 
+  savedObject = (id, name, category, link) => {
+    if (this.state.categoryId !== {}) {
+      return {
+        id,
+        name,
+        category,
+        link
+      };
+    } 
+  };
 
+  savedImages = () => {
+    // saves image with id, name, category, and link 
+    // and puts it in the categoryId array
+    let { categoryInput, cats } = this.state;
+    let images = this.savedObject(cats, cats, categoryInput, cats);
+    this.setState({
+      categories: this.uniqueCategories([
+        ...this.state.categories,
+        categoryInput
+      ]),
+      categoryId: {
+        id: this.state.cats,
+        name: this.state.cats,
+        category: this.state.categoryInput,
+        link: this.state.cats
+      },
+      savedImages: [...this.state.savedImages, images],
+      categoryInput: ""
+    });
+    this.getCats();
+  };
 
   render() {
     return (
@@ -89,20 +99,24 @@ class Layout extends Component {
               <Title />
             </StyledRow>
             <Card
-             getCats={this.getCats}
-             cats={this.state.cats}
-             handleChange={this.handleChange}
-             handleClick={this.handleClick}
-             categoryInput={this.state.categoryInput}
+              getCats={this.getCats}
+              cats={this.state.cats}
+              savedImages={this.savedImages}
+              handleChange={this.handleChange}
+              categoryInput={this.state.categoryInput}
             />
           </StyledCol>
-          <Categories
+          <Categories 
+            categories={this.state.categories}
             savedImages={this.state.savedImages}
-          />
+            selectedCategory={this.selectedCategory}
+            category={this.state.category}
+           />
+          <SavedImages savedImages={this.state.savedImages} />
         </StyledContainer>
       </ThemeProvider>
     );
   }
 }
 
-export default Layout;
+export default Layout

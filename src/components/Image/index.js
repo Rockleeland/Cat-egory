@@ -1,17 +1,3 @@
-import React from 'react'
-import LoadingSpinner from '../Loader'
-import { StyledDiv, StyledImg } from './style'
+import Image from './ImageContainer'
 
-const Image = (props) => {
-    return (
-        <StyledDiv>
-            <StyledImg 
-                saved={props.saved}
-                src={props.cats} 
-                loader={<LoadingSpinner />} 
-            />
-        </StyledDiv>
-    )
-}
-
-export default Image;
+export default Image

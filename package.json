@@ -11,6 +11,7 @@
     "react-image": "^2.1.1",
     "react-loader-spinner": "^2.3.0",
     "react-scripts": "2.1.8",
+    "react-visibility-sensor": "^5.0.2",
     "styled-components": "^4.2.0"
   },
   "scripts": {
