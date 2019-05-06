@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const StyledTitle = styled.div`
   color: ${props => props.theme.color};
   font-family: "Rouge Script", cursive;
-  font-size: 4vw;
+  font-size: calc(30px + 1vw);
   font-weight: normal;
   line-height: 48px;
   margin: 1rem 0;

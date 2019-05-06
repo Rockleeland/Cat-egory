@@ -2,11 +2,12 @@ import React from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
+import { StyledInputGroup, StyledFormControl } from './style'
 
 const ButtonContainer = props => {
   return (
-    <InputGroup className="mb-3">
-      <FormControl
+    <StyledInputGroup className="mb-3">
+      <StyledFormControl
         placeholder="Category"
         aria-label="Category"
         aria-describedby="basic-addon2"
@@ -18,7 +19,7 @@ const ButtonContainer = props => {
           Save
         </Button>
       </InputGroup.Append>
-    </InputGroup>
+    </StyledInputGroup>
   );
 };
 
