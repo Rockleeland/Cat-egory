@@ -3,6 +3,14 @@ import Img from "react-image"
 
 export const StyledDiv = styled.div`
   display: flex;
+  min-height: 350px;
+  /* align-items: ${props => (props.saved ? "flex-start" : "center")}; */
+
+  div {
+      display: flex;
+      justify-content: ${props => (props.saved ? "flex-start" : "center")};
+      align-items: ${props => (props.saved ? "flex-start" : "center")};
+  }
 `;
 
 export const StyledImg = styled(Img)`
