@@ -2,6 +2,8 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
+Save your random cat images in different categories in this react app!
+
 This site was developed with [create-react-app](https://github.com/facebook/create-react-app) and serves as the home page for [Cat-egory App](https://cat-egoryapp.netlify.com).
 
 ### Getting Started
